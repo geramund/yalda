@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YALDA</title>
+<meta name="description" content="The Young Artists Language and Devotion Alliance is a volunteer-run, tuition-free mentorship program and publishing platform for young writers.">
+<link rel="icon" href="yaldalogo.png">
+<link rel="stylesheet" href="yalda.css">
+</head>
+
+<body class="home">
+<div class="sheet">
+
+  <div class="contact">
+    farnoosh.fathi@gmail.com
+
+    <!-- Mailing list. No backend yet: the button opens a pre-addressed email.
+         To use a real provider, replace the JS at the bottom of this file with
+         the provider's <form action="..." method="post"> snippet and keep this
+         markup as it is. -->
+    <form class="maillist" id="maillist">
+      <strong>YALDA MAILING LIST</strong>
+      <label for="ml-email">Email address:</label>
+      <input id="ml-email" name="email" type="email" required autocomplete="email">
+      <button type="submit">JOIN</button>
+    </form>
+
+    <!-- Click through to the full-size flier. -->
+    <a class="flier" href="yaldaflier.png">
+      <img src="yaldaflier.png" alt="YALDA Chapbook Launch, 22 August 2026, 5 PM, Ugly Duckling Presse Studio, American Can Factory, Brooklyn">
+    </a>
+
+    <a class="photo" href="lecriture.png">
+      <img src="lecriture.png" alt="Young writers reading together at a picnic table">
+    </a>
+  </div>
+
+  <div class="masthead">
+    <nav class="stack">
+      <a class="to-chapbooks"  href="chapbooks.html">CHAPBOOKS</a>
+      <a class="to-about"      href="about.html">ABOUT</a>
+      <a class="to-program"    href="program.html">PROGRAM</a>
+      <a class="to-collective" href="collective.html">COLLECTIVE</a>
+      <a class="to-archive"    href="archive.html">ARCHIVE</a>
+      <a class="to-support"    href="support.html">SUPPORT</a>
+    </nav>
+    <img class="logo" src="yaldalogo.png" alt="The YALDA hand of mystery">
+  </div>
+
+  <p class="caption">&hellip;which would reconcile self-despair with the rapturous
+  consciousness of life beyond self. She found her epos&hellip;</p>
+
+  <p class="caption redline">&hellip;we seldom consider the precious things that can
+  be found in this soul</p>
+
+</div>
+
+<script>
+document.getElementById('maillist').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var addr = document.getElementById('ml-email').value;
+  window.location.href = 'mailto:farnoosh.fathi@gmail.com'
+    + '?subject=' + encodeURIComponent('YALDA mailing list')
+    + '&body=' + encodeURIComponent('Please add me to the YALDA mailing list: ' + addr);
+});
+</script>
+
+</body>
+</html>

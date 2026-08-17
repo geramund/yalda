@@ -1,0 +1,280 @@
+/* YALDA
+   Hand-coded on purpose. Black on white, Times, one accent per section.
+   The only rule: nothing should look designed. */
+
+:root {
+  --accent: #228C22;        /* HOME — green */
+  --ink:    #000000;
+  --paper:  #ffffff;
+}
+
+/* A different saturated hover color on every page. That is the joke. */
+body.chapbooks  { --accent: #CC0000; }
+body.about      { --accent: #0099CC; }
+body.program    { --accent: #CC6600; }
+body.collective { --accent: #7B2FBE; }
+body.archive    { --accent: #008080; }
+body.support    { --accent: #CC0066; }
+
+html { color-scheme: light; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+}
+a:hover,
+a:focus-visible {
+  color: var(--accent);
+}
+
+/* Links inside running prose get an underline, otherwise they vanish into the
+   sentence. Nav and name lists stay bare, like the reference. */
+.col p a, .col li a { text-decoration: underline; }
+
+.sheet {
+  max-width: 940px;
+  padding: 34px 28px 90px 46px;
+}
+
+/* ---------- home: two columns, contact block up in the right one ----------
+   A float won't do here: .masthead is a flex container, so it would clear the
+   contact block and shove the hand down the page. Explicit grid instead. */
+
+body.home .sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 232px;
+  column-gap: 50px;
+  align-items: start;
+}
+/* Right column: email, mailing list, flier, photo. Left: nav + hand, two quotes. */
+.contact  { grid-column: 2; grid-row: 1 / span 3; }
+.masthead { grid-column: 1; grid-row: 1; }
+.caption  { grid-column: 1; grid-row: 2; }  /* .redline overrides to row 3 */
+
+.contact {
+  text-align: right;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* ---------- home: stacked nav, then the hand to its right ---------- */
+
+.masthead {
+  display: flex;
+  align-items: flex-start;
+  gap: 110px;
+  padding-top: 4px;
+}
+
+.logo {
+  width: 168px;
+  height: auto;
+  display: block;
+}
+
+nav.stack {
+  padding-top: 6px;
+  letter-spacing: 0.09em;
+  line-height: 3.1;
+  font-size: 15px;
+}
+nav.stack a { display: block; }
+
+/* Each link hovers in the accent of the page it goes to, so the color is a
+   preview of where you're about to land. */
+nav.stack a.to-chapbooks:hover  { color: #CC0000; }
+nav.stack a.to-about:hover      { color: #0099CC; }
+nav.stack a.to-program:hover    { color: #CC6600; }
+nav.stack a.to-collective:hover { color: #7B2FBE; }
+nav.stack a.to-archive:hover    { color: #008080; }
+nav.stack a.to-support:hover    { color: #CC0066; }
+
+/* ---------- subpages: nav in a row, no logo ---------- */
+
+nav.row {
+  letter-spacing: 0.09em;
+  font-size: 14px;
+  margin-bottom: 54px;
+}
+nav.row a { margin-right: 34px; display: inline-block; }
+nav.row a.here { color: var(--accent); }
+
+/* ---------- text ---------- */
+
+.col { max-width: 620px; }
+
+p { margin: 0 0 1.15em 0; }
+
+h2 {
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin: 52px 0 16px 0;
+}
+h2:first-child { margin-top: 0; }
+
+h3 {
+  font-size: 17px;
+  font-style: italic;
+  font-weight: normal;
+  margin: 34px 0 10px 0;
+}
+
+ul { padding-left: 20px; margin: 0 0 1.15em 0; }
+li { margin-bottom: 1.1em; }
+
+.caption {
+  font-size: 14px;
+  font-style: italic;
+  max-width: 430px;
+  margin-top: 46px;
+  line-height: 1.65;
+}
+
+/* Second quotation, sitting close under the first, in red.
+   Declared after .caption so its grid-row wins (equal specificity). */
+.redline {
+  color: #CC0000;
+  margin-top: 16px;
+  grid-row: 3;
+}
+
+
+/* Flier and photo, stacked under the mailing list in the right column.
+   Same width so their edges line up; both click through to the full-size
+   file; each lights up in a different color. */
+.flier, .photo {
+  display: block;
+  width: 150px;
+  margin-left: auto;
+}
+.flier { margin-top: 26px; }
+.photo { margin-top: 20px; }
+
+.flier img, .photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.flier:hover img { border-color: var(--accent); }   /* green */
+.photo:hover img { border-color: #0000FF; }         /* old default link blue */
+
+/* Unused at the moment. Kept as the hook for a red announcement line
+   (Reena's "GALLERY CLOSED FOR SUMMER BREAK"): <p class="announce">…</p> */
+.announce {
+  color: #CC0000;
+  margin: 40px 0;
+  letter-spacing: 0.05em;
+  font-size: 15px;
+}
+
+/* ---------- chapbook covers ----------
+   Sits outside .col so the row isn't squeezed by the 620px text measure.
+   Each cover hovers in the ink its own cover is printed in. */
+
+.covers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 34px;
+  margin: 40px 0 46px 0;
+}
+
+.cover { width: 170px; margin: 0; }
+.cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.cover figcaption {
+  font-size: 13px;
+  line-height: 1.5;
+  margin-top: 9px;
+}
+
+.cover.ink-gold  a:hover img { border-color: #C9A400; }
+.cover.ink-black a:hover img { border-color: #000000; }
+.cover.ink-red   a:hover img { border-color: #FF0000; }
+.cover.ink-blue  a:hover img { border-color: #0000FF; }
+
+/* Plain lists of names, one per line, undecorated. */
+.names { line-height: 2.05; margin: 0 0 30px 0; }
+.names span { display: block; }
+
+.soon { font-style: italic; }
+
+/* ---------- mailing list ---------- */
+
+.maillist {
+  border: 1px solid var(--ink);
+  padding: 13px 14px 15px 14px;
+  width: 232px;
+  margin: 18px 0 0 auto;   /* sits under the email, flush to the right edge */
+  font-size: 14px;
+  text-align: left;        /* undo the right-alignment of .contact */
+}
+.maillist strong {
+  display: block;
+  letter-spacing: 0.09em;
+  font-size: 13px;
+  margin-bottom: 11px;
+}
+.maillist input {
+  font-family: inherit;
+  font-size: 14px;
+  border: 1px solid #999;
+  padding: 3px 4px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 9px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.maillist button {
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.09em;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 3px 13px;
+  cursor: pointer;
+}
+.maillist button:hover { color: var(--accent); border-color: var(--accent); }
+
+.addr { font-size: 15px; line-height: 1.75; margin-bottom: 1.15em; }
+
+/* ---------- narrower windows ---------- */
+
+/* Column 1 gets tight before the layout stacks; pull the hand in closer. */
+@media (max-width: 880px) {
+  .masthead { gap: 40px; }
+  .sheet { padding-left: 28px; }
+}
+
+@media (max-width: 620px) {
+  body.home .sheet { display: block; }
+  .sheet { padding: 24px 20px 70px 20px; }
+  .contact { text-align: left; margin: 0 0 26px 0; }
+  /* hand first, nav under it */
+  .masthead { gap: 30px; flex-direction: column-reverse; align-items: flex-start; }
+  nav.stack { padding-top: 0; line-height: 2.6; }
+  .maillist { margin-left: 0; }
+  .flier, .photo { margin-left: 0; }
+  nav.row a { margin-right: 22px; line-height: 2.4; }
+}
