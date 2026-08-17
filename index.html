@@ -12,15 +12,36 @@
 <body class="home">
 <div class="sheet">
 
+  <div class="masthead">
+    <nav class="stack">
+      <a class="to-chapbooks"  href="chapbooks.html">CHAPBOOKS</a>
+      <a class="to-about"      href="about.html">ABOUT</a>
+      <a class="to-program"    href="program.html">PROGRAM</a>
+      <a class="to-collective" href="collective.html">COLLECTIVE</a>
+      <a class="to-archive"    href="archive.html">ARCHIVE</a>
+      <a class="to-support"    href="support.html">SUPPORT</a>
+    </nav>
+    <img class="logo" src="yaldalogo.png" width="250" height="558" alt="The YALDA hand of mystery">
+  </div>
+
+  <p class="caption">&hellip;which would reconcile self-despair with the rapturous
+  consciousness of life beyond self. She found her epos&hellip;</p>
+
+  <p class="caption redline">&hellip;we seldom consider the precious things that can
+  be found in this soul</p>
+
+  <!-- Sits in grid column 2 on wide screens, so its place in the markup is
+       free. On phones the wrapper steps aside (display: contents) and the
+       sheet places these children itself. -->
   <div class="contact">
-    farnoosh.fathi@gmail.com
+    <p class="wordmark">YALDA</p>
 
     <!-- Mailing list. The site is static, so the form posts to FormSubmit,
          which relays each signup to farnoosh.fathi@gmail.com and sends the
          visitor on to thanks.html. The hidden _ fields are FormSubmit's
          settings, not data. -->
     <form class="maillist" action="https://formsubmit.co/farnoosh.fathi@gmail.com" method="POST">
-      <strong>YALDA MAILING LIST</strong>
+      <strong>MAILING LIST</strong>
       <label for="ml-email">Email address:</label>
       <input id="ml-email" name="email" type="email" required autocomplete="email">
 
@@ -34,33 +55,35 @@
       <button type="submit">JOIN</button>
     </form>
 
-    <!-- Click through to the full-size flier. -->
-    <a class="flier" href="yaldaflier.png">
-      <img src="yaldaflier.png" alt="YALDA Chapbook Launch, 22 August 2026, 5 PM, Ugly Duckling Presse Studio, American Can Factory, Brooklyn">
-    </a>
+    <!-- The two newest images. On phones these ride at the top of the page,
+         above everything but the nav; on wide screens they head the right
+         column. Each clicks through to the full-size file. The width/height
+         attributes are the real pixel sizes — they give the browser the aspect
+         ratio so it can hold the space while the image loads. -->
+    <div class="pics">
+      <a class="pic" href="images/launch2026.png">
+        <img src="images/launch2026.png" width="2550" height="3300" loading="lazy" decoding="async"
+             alt="YALDA Chapbook Launch, 22 August 2026, 5 PM, Ugly Duckling Presse Studio, American Can Factory, Brooklyn">
+      </a>
 
-    <a class="photo" href="lecriture.png">
-      <img src="lecriture.png" alt="Young writers reading together at a picnic table">
-    </a>
+      <a class="pic ink-orange" href="images/lenaworkshop2026.jpeg">
+        <img src="images/lenaworkshop2026.jpeg" width="1170" height="1044" loading="lazy" decoding="async"
+             alt="Being Dreamt by Other Species: What the trees try to tell us we are &mdash; a generative writing workshop for ages 12 to 21">
+      </a>
+    </div>
+
+    <!-- Everything older. Add <a class="pic"> entries here, newest first, in
+         the same shape as the two above; as each one arrives, push the oldest
+         of the pair up there down into this block. They pair up two across
+         below the hand and the mailing list on phones, and carry on down the
+         right column on wide screens. The block hides itself while empty. -->
+    <div class="pics older">
+      <a class="pic ink-blue" href="images/lecriture.png">
+        <img src="images/lecriture.png" width="700" height="700" loading="lazy" decoding="async"
+             alt="Young writers reading together at a picnic table">
+      </a>
+    </div>
   </div>
-
-  <div class="masthead">
-    <nav class="stack">
-      <a class="to-chapbooks"  href="chapbooks.html">CHAPBOOKS</a>
-      <a class="to-about"      href="about.html">ABOUT</a>
-      <a class="to-program"    href="program.html">PROGRAM</a>
-      <a class="to-collective" href="collective.html">COLLECTIVE</a>
-      <a class="to-archive"    href="archive.html">ARCHIVE</a>
-      <a class="to-support"    href="support.html">SUPPORT</a>
-    </nav>
-    <img class="logo" src="yaldalogo.png" alt="The YALDA hand of mystery">
-  </div>
-
-  <p class="caption">&hellip;which would reconcile self-despair with the rapturous
-  consciousness of life beyond self. She found her epos&hellip;</p>
-
-  <p class="caption redline">&hellip;we seldom consider the precious things that can
-  be found in this soul</p>
 
 </div>
 
