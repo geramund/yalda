@@ -298,10 +298,13 @@ li { margin-bottom: 1.1em; }
      different wrappers. `display: contents` drops those two wrappers' boxes so
      the sheet can place their children directly, and every item below is given
      an explicit row. The wrappers stay in the tree, so inherited things like
-     text-align still reach the children. */
+     text-align still reach the children.
+     The outer two columns are empty spacers: they take whatever is left over
+     and share it evenly, which centres the hand and the mailing list as a pair
+     on the last row. Everything else spans 1 / -1, so it ignores them. */
   body.home .sheet {
     display: grid;
-    grid-template-columns: 68px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 68px minmax(0, 210px) minmax(0, 1fr);
     column-gap: 20px;
     align-items: start;
   }
@@ -312,8 +315,8 @@ li { margin-bottom: 1.1em; }
   .pics        { grid-row: 3; grid-column: 1 / -1; }
   .caption     { grid-row: 4; grid-column: 1 / -1; }
   .redline     { grid-row: 5; grid-column: 1 / -1; }
-  .logo        { grid-row: 6; grid-column: 1; }
-  .maillist    { grid-row: 6; grid-column: 2; }
+  .logo        { grid-row: 6; grid-column: 2; }
+  .maillist    { grid-row: 6; grid-column: 3; }
   .pics.older  { grid-row: 7; grid-column: 1 / -1; }
 
   /* Nav across the top like the subpages. */
@@ -329,10 +332,11 @@ li { margin-bottom: 1.1em; }
   .redline { margin-top: 16px; }
 
   .contact { text-align: left; }
-  /* Hand and mailing list close the page, under the quotations. Matching top
-     margins keep their two tops on one line. */
+  /* Hand and mailing list close the page, under the quotations, centred
+     together. Matching top margins keep their two tops on one line; the
+     mailing list fills its track, which the grid caps at 210px. */
   .logo { width: 68px; margin-top: 34px; }
-  .maillist { width: auto; max-width: 210px; margin: 34px 0 0 0; }
+  .maillist { width: auto; max-width: none; margin: 34px 0 0 0; }
 
   /* Two across, sharing the width evenly, wrapping onto further rows as more
      are added. They are different shapes, so they hang to different depths —
