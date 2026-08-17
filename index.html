@@ -15,14 +15,22 @@
   <div class="contact">
     farnoosh.fathi@gmail.com
 
-    <!-- Mailing list. No backend yet: the button opens a pre-addressed email.
-         To use a real provider, replace the JS at the bottom of this file with
-         the provider's <form action="..." method="post"> snippet and keep this
-         markup as it is. -->
-    <form class="maillist" id="maillist">
+    <!-- Mailing list. The site is static, so the form posts to FormSubmit,
+         which relays each signup to farnoosh.fathi@gmail.com and sends the
+         visitor on to thanks.html. The hidden _ fields are FormSubmit's
+         settings, not data. -->
+    <form class="maillist" action="https://formsubmit.co/farnoosh.fathi@gmail.com" method="POST">
       <strong>YALDA MAILING LIST</strong>
       <label for="ml-email">Email address:</label>
       <input id="ml-email" name="email" type="email" required autocomplete="email">
+
+      <input type="hidden" name="_subject" value="new yalda mailing list signup">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://yaldacollective.org/thanks.html">
+      <!-- Bait field: real people never see it, bots fill it and get dropped. -->
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off">
+
       <button type="submit">JOIN</button>
     </form>
 
@@ -55,16 +63,6 @@
   be found in this soul</p>
 
 </div>
-
-<script>
-document.getElementById('maillist').addEventListener('submit', function (e) {
-  e.preventDefault();
-  var addr = document.getElementById('ml-email').value;
-  window.location.href = 'mailto:farnoosh.fathi@gmail.com'
-    + '?subject=' + encodeURIComponent('YALDA mailing list')
-    + '&body=' + encodeURIComponent('Please add me to the YALDA mailing list: ' + addr);
-});
-</script>
 
 </body>
 </html>

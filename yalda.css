@@ -257,6 +257,15 @@ li { margin-bottom: 1.1em; }
 }
 .maillist button:hover { color: var(--accent); border-color: var(--accent); }
 
+/* Spam bait. Hidden from people, left visible to bots that read the markup. */
+.maillist .hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
 .addr { font-size: 15px; line-height: 1.75; margin-bottom: 1.15em; }
 
 /* ---------- narrower windows ---------- */
