@@ -221,6 +221,10 @@ li { margin-bottom: 1.1em; }
   margin-top: 9px;
 }
 
+/* The earlier cohort printed grey on cream: a #ccc rule vanishes against the
+   paper, so those covers get a black outline to hold their edge. */
+.covers.earlier .cover img { border-color: #000; }
+
 .cover.ink-gold  a:hover img { border-color: #C9A400; }
 .cover.ink-black a:hover img { border-color: #000000; }
 .cover.ink-red   a:hover img { border-color: #FF0000; }
